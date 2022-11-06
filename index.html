@@ -1279,11 +1279,18 @@ Contact Us
 <script>
   const scriptURL = 'https://script.google.com/macros/s/AKfycbyVVUUuIyrWSGjNDYHe1sJ1D2WogJKcthOlU1YSMw9vfbN5a6q6uu1yz0LJ4tPKc5LI/exec'
   const form = document.forms['submit-to-google-sheet']
+  const msg = document.getElementById("msg")
 
   form.addEventListener('submit', e => {
     e.preventDefault()
     fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-      .then(response => console.log('Success!', response))
+      .then(response => {
+        msg.innerHTML = "  "
+        setTimeout(function(){
+          msg.innerHTML = ""
+        }, 5000)
+        form.reset()
+      }) 
       .catch(error => console.error('Error!', error.message))
   })
 </script>
