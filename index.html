@@ -1149,7 +1149,7 @@ ante in maximus.
 By clicking contact us button, you agree our terms and
 policy,
 </p>
-<button href="#home"type="submit" class="a1o a1p a1q a1m[14px] a47 aR aS aV hover:a1s">
+<button onclick="myButton()" type="submit" class="a1o a1p a1q a1m[14px] a47 aR aS aV hover:a1s">
 Contact Us
 </button>
 </div>
@@ -1293,4 +1293,10 @@ Contact Us
       }) 
       .catch(error => console.error('Error!', error.message))
   })
+</script>
+
+<script>
+  function myButton() {
+    location.reset();
+  }
 </script>
