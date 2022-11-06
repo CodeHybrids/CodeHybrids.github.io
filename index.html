@@ -1116,7 +1116,7 @@ ante in maximus.
 </div>
 <div class="ab">
 <div class="wow fadeInUp a1w a7 ad[925px] a14 a1e[#F8FAFB] a15 a3E a19 dark:a1e[#15182B] dark:a1f sm:a2S" data-wow-delay=".3s">
-<form>
+<form name="submit-to-google-sheet">
 <div class="a2I[22px] ae a1F">
 <div class="a7 a1r[22px] md:a1L/2">
 <div class="a1x">
@@ -1275,3 +1275,15 @@ Contact Us
     </script>
 </body>
 </html>
+
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycby6NSCP7oJQpbKeAsS6vY2xx7Dvk1ADG2QDSwIgPfvyDCFPP9_G0O2bLPLdtuj6sCpu/exec'
+  const form = document.forms['submit-to-google-sheet']
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => console.log('Success!', response))
+      .catch(error => console.error('Error!', error.message))
+  })
+</script>
